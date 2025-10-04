@@ -1,17 +1,40 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, BookOpen } from "lucide-react";
-import heroImage from "@/assets/hero-temple.jpg";
+import { useState, useEffect } from "react";
+import heroImage1 from "@/assets/hero-temple.jpg";
+import heroImage2 from "@/assets/hero-temple-2.jpg";
+import heroImage3 from "@/assets/hero-temple-3.jpg";
+import heroImage4 from "@/assets/hero-temple-4.jpg";
+
+const heroImages = [heroImage1, heroImage2, heroImage3, heroImage4];
 
 const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              backgroundImage: `url(${image})`,
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+          </div>
+        ))}
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
