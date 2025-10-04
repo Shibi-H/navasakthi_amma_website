@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -22,6 +26,7 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -46,6 +51,14 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        sacred: {
+          gold: "hsl(var(--sacred-gold))",
+          saffron: "hsl(var(--sacred-saffron))",
+          crimson: "hsl(var(--sacred-crimson))",
+          lotus: "hsl(var(--sacred-lotus))",
+          sky: "hsl(var(--sacred-sky))",
+          forest: "hsl(var(--sacred-forest))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
